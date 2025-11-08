@@ -1,0 +1,297 @@
+.logo-brand {
+    width: 100px;
+    height: 45px;
+    border-radius: 10px;
+}
+
+.logo-brand-footer {
+    width: 100px;
+    height: 45px;
+}
+
+.navbar {
+    background-color: #FFA5A5;
+    border-bottom: #bd0d0d solid 2px;
+}
+
+.nav-link {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.nav-link :active {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#loginbtn {
+    background-color: #FF5757;
+    border-color: #bd0d0d;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+}
+
+#create-acc-btn {
+    background-color: #FF5757;
+    border-color: #bd0d0d;
+    color: #ffffff;
+    font-weight: bold;
+    width: 50%;
+    box-shadow: 0 5px 8px rgba(255, 69, 69, 0.171);
+}
+
+#create-acc-btn:hover,
+#create-acc-btn:focus {
+    background-color: #e03232;
+}
+
+#create-acc-container {
+    text-align: center;
+}
+
+#login-btn:hover,
+#login-btn :focus {
+    background-color: #e03232;
+}
+
+.nav-link:focus .nav-link:hover {
+    color: #FFE5E5;
+}
+
+.bg-image {
+    width: 100%;
+    height: 100%;
+}
+
+
+.form-heading {
+    font-size: 40px;
+    font-family: 'CustomFont';
+    color: #ffffff;
+    text-shadow: 0px -1px 0 #FFA5A5, 1px -1px 0 #FF5757, -1px 1px 0 #C44141, -4px 1px 0 #C44141;
+}
+
+#terms-text {
+    font-weight: bold;
+    color: #4e4e4e;
+
+}
+
+.terms-link {
+    color: #696969;
+    text-decoration: none;
+}
+
+.terms-link:hover {
+    color: #df6d6d;
+}
+
+.punchyline {
+    font-size: 25px;
+    font-weight: bold;
+    color: #4e4e4e;
+}
+
+.description-container {
+    margin-top: 10px;
+}
+
+.description {
+    font-weight: bold;
+    color: #4e4e4e;
+}
+
+.inner-form-container {
+    background-color: #f3c6c6;
+    border: #C44141 solid 1px;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
+.form-control {
+    background-color: #fff7f7;
+    font-weight: bold;
+}
+
+.form-control:focus {
+    border-color: #f02929;
+    box-shadow: 0 0 0 .25rem rgb(230, 140, 140);
+}
+
+#outer-form-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#inner-left-container {
+    text-align: left;
+}
+
+#center-left-container {
+    align-content: center;
+}
+
+#outer-left-container {
+    align-items: center;
+}
+
+.main-title {
+    font-size: 100px;
+    font-family: 'CustomFont';
+    color: #ffffff;
+    text-shadow: -10px -1px 0 #FFA5A5, 1px -1px 0 #FF5757, -1px 1px 0 #C44141, 2px 1px 0 #C44141;
+
+}
+
+.form-label {
+    font-weight: bold;
+    color: #4e4e4e;
+}
+
+.Or-divider {
+    width: 100%;
+    text-align: center;
+    color: #db7c7c;
+    border-bottom: 2px solid #db7c7c;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+
+#third-bg .col-sm-4 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.divider {
+    aspect-ratio: 1000/100;
+    background: no-repeat center;
+    background-size: cover;
+}
+
+.divider2 {
+    aspect-ratio: 1000/200;
+    background: no-repeat center;
+    background-size: cover;
+}
+
+.wave-1 {
+    background-image: url(../images/wave-haikei.svg);
+}
+
+.wave-2 {
+    background-image: url(../images/wave-haikei-contact.svg);
+}
+
+.footers-link {
+    color: #000000;
+    text-decoration: none;
+}
+
+.Or-divider span {
+    background-color: #f3c6c6;
+    padding: 0 10px;
+}
+
+#bg-container {
+    background-color: #FFE5E5;
+}
+
+#sec-bg {
+    background-color: #ffffff;
+}
+
+#third-bg {
+    background-color: #C44141;
+
+}
+
+#freespace {
+    height: 100px;
+}
+
+.row .col-6 {
+    margin-top: 0.5rem;
+    align-content: center;
+    font-weight: bold;
+    color: #4e4e4e;
+    text-align: left;
+
+}
+
+.row
+.col-2 {
+    margin-top: 0.5rem;
+    align-content: center;
+    font-weight: bold;
+    color: #4e4e4e;
+    text-align: center;
+    padding-bottom: 10px;
+
+}
+
+.row .col-4 {
+    margin-top: 0.5rem;
+    align-content: center;
+    font-weight: bold;
+    color: #4e4e4e;
+    text-align: left;
+    border-right: 4px solid #db7c7c;
+    border-left: 4px solid #db7c7c;
+}
+
+.second-header {
+    font-size: 50px;
+    font-family: 'CustomFont';
+    color: #ffffff;
+    text-shadow: -5px -1px 0 #FFA5A5, 1px 1px 0 #f5bdbd, 0px 0px 0 #C44141, 0px 0px 0 #C44141;
+    text-align: center;
+}
+
+
+.sec-description {
+    font-weight: bold;
+    color: #4e4e4e;
+    font-size: 20px;
+}
+
+.third-header {
+    font-size: 50px;
+    font-family: 'CustomFont';
+    color: #ffffff;
+    text-shadow: 0px 0px 0 #FFA5A5, 0px 0px 0 #f5bdbd, 0px 0px 0 #C44141, 0px 0px 0 #C44141;
+    text-align: center;
+}
+
+
+
+/*Viewport Sizes*/
+@media screen and (max-width: 540px) {
+    .main-title {
+        font-size: 75px;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .main-title {
+        font-size: 85px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .main-title {
+        font-size: 110px;
+    }
+}
+
+@media screen and (min-width: 1280px) {}
+
+/*Viewport Sizes*/
+/*Custom Fonts Import*/
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../fonts/Vaseline\ Extra.ttf') format('truetype');
+
+}
