@@ -28,7 +28,7 @@
                     </ul>
                     <form action="/logout" method="POST" class="d-flex">
                         @csrf
-                        <button class="btn btn-outline-success" id="logoutbtn" type="submit">Logout</button>
+                        <button class="btn btn-outline-success" id="btn-out" type="submit">Logout</button>
                     </form>
                 </div>
             </div>
@@ -147,8 +147,7 @@
                                     placeholder="Search books, authors, or ISBNs..." aria-label="Search input"
                                     id="search-input-field">
                                 <button class="btn btn-outline-primary rounded-r-lg" id="search-btn" type="submit">
-                                    <!--Need Search icon-->
-                                    Search
+                                    <img class="search-icon" src="{{ asset('icons/search.png') }}" alt="">
                                 </button>
                             </div>
                         </form>
@@ -156,16 +155,30 @@
                     </div>
                 </div>
             </nav>
+            <div class="position-fixed bottom-0 end-0 p-3">
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="popToast">
+                    <div class="toast-header">
+                        <img src="{{ asset('icons/Saybabook-ico.png') }}" id="toast-img" class="rounded me-1" alt="...">
+                        <strong class="me-auto">Saybabook</strong>
+                        <small>1 min ago</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        Welcome User!
+                    </div>
+                </div>
+            </div>
         </section>
         <div class="divider wave-1">
         </div>
-        <section class="second-bg">                
+        <section class="second-bg">
         </section>
         <!-- Navbar Menu Starts -->
     @else
     @endauth
     <script src="{{ asset('bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ asset('js/search.js') }}"></script>
+    <script src="{{ asset('js/showtoast.js') }}"></script>
 </body>
 
 </html>
