@@ -66,7 +66,7 @@
                                 <a class="nav-link" href="#">Manga</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">My Books</a>
+                                <a class="nav-link" href="{{ route('userbooks') }}">My Books</a>
                             </li>
                         </ul>
                         <form class="d-flex" role="search">
@@ -191,29 +191,27 @@
                     <div class="row justify-content-start mx-auto" id="card-container">
                         <div class="card" id="paginated-card">
                             <img src="{{ asset('images/BC.png') }}" class="card-img-top" alt="...">
+                            <span class="card-title">Black Clover</span>
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of
-                                    the
-                                    card's content.</p>
+
                                 <a href="#" class="btn btn-primary">Details</a>
                             </div>
                         </div>
                         <div class="card" id="paginated-card">
                             <img src="{{ asset('images/BC.png') }}" class="card-img-top" alt="...">
+                            <span class="card-title">Black Clover</span>
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up
-                                    the
-                                    bulk of
-                                    the
-                                    card's content.</p>
                                 <a href="#" class="btn btn-primary">Details</a>
                             </div>
                         </div>
+                        <div class="card" id="paginated-card-add">
+                            <button class="btn-add" type="button">
+                                <span class="add-ico">+</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
+            </div>
             </div>
             <div class="d-flex justify-content-center" id="pagination-container">
                 <nav aria-label="Page navigation" id="card-pagination">

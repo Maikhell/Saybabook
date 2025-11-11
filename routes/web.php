@@ -7,16 +7,22 @@ use App\Http\Middleware\PreventBackHistory;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
-  //Get Routes
+//Get Routes
 Route::get('/', function () {
     return view('landingpage');
 })->name('landingpage')->middleware(PreventBackHistory::class);
-Route::get('/mybooks', [ProfileController::class, 'showProfileHeader'])
+
+Route::get('/mybooks', [ProfileController::class, 'showMyBooksHeader'])
     ->middleware(PreventBackHistory::class)
     ->middleware(Authenticate::class)
     ->name('mybooks');
 
-  //Post Routes
+Route::get('/userbooks', [ProfileController::class, 'showUserBooksHeader'])
+    ->middleware(PreventBackHistory::class)
+    ->middleware(Authenticate::class)
+    ->name('userbooks');
+
+//Post Routes
 Route::post('/register', [UserController::class, 'register'])
     ->name('register');
 Route::post('/logout', [UserController::class, 'logout'])

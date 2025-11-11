@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saybabook</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap-5.3.8-dist/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/mybook.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/userbooks.css')}}">
     <link rel="icon" type="image/x-icon" href="{{ asset('icons/Saybabook-ico.png') }}">
 </head>
 
@@ -57,7 +57,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#">Browse</a>
+                                <a class="nav-link" aria-current="page" href="{{ route('mybooks') }}">Browse</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="#">Books</a>
@@ -166,17 +166,19 @@
                     </div>
                 </div>
             </nav>
+
             @if ($userHeaderData)
                 <div class="position-fixed bottom-0 end-0 p-3">
                     <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="popToast">
                         <div class="toast-header">
                             <img src="{{ asset('icons/Saybabook-ico.png') }}" id="toast-img" class="rounded me-1" alt="...">
                             <strong class="me-auto">Saybabook</strong>
-                            <small>1 min ago</small>
+                            <small>Just now</small>
                             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                         </div>
                         <div class="toast-body">
-                            Welcome Back! <span class="user-name">{{ $userHeaderData->username }}</span>
+                            Hey! <span class="user-name">{{ $userHeaderData->username }} </span> you can add your books by
+                            pressing the add button!
                         </div>
                     </div>
                 </div>
@@ -189,28 +191,10 @@
             <div class="container-fluid" id="card-outer-container">
                 <div id="card-outer-container">
                     <div class="row justify-content-start mx-auto" id="card-container">
-                        <div class="card" id="paginated-card">
-                            <img src="{{ asset('images/BC.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of
-                                    the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Details</a>
-                            </div>
-                        </div>
-                        <div class="card" id="paginated-card">
-                            <img src="{{ asset('images/BC.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up
-                                    the
-                                    bulk of
-                                    the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Details</a>
-                            </div>
+                        <div class="card" id="paginated-card-add">
+                            <button class="btn-add" type="button" data-bs-toggle="modal" data-bs-target="#addbooksModal">
+                                <span class="add-ico">+</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -228,6 +212,94 @@
                 </nav>
             </div>
         </section>
+        <div class="modal" id="addbooksModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/addbooks" method="POST" enctype="multipart/form-data">
+                            @csrf <div class="row justify-content-center">
+                                <div class="col-md-4 col-sm-12 text-center">
+                                    <h4 class="mb-3">Book Cover</h4>
+                                    <img class="img-fluid border mb-3" style="max-height: 300px; object-fit: cover;"
+                                        src="{{ asset('icons/sampleprofile.jpg') }}" alt="Book Cover Preview"
+                                        id="bookCoverPreview">
+                                    <div class="mb-3">
+                                        <label for="bookCoverFile" class="btn btn-primary w-100">
+                                            <i class="fas fa-upload me-2"></i> Choose Book Cover
+                                        </label>
+                                        <input type="file" class="form-control d-none" id="bookCoverFile" name="book_cover"
+                                            accept="image/*">
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-sm-12">
+                                    <div class="mb-3">
+                                        <label for="bookTitle" class="form-label">Book Title</label>
+                                        <input type="text" class="form-control" id="bookTitle" name="book_title" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="bookAuthor" class="form-label">Book Author</label>
+                                        <input type="text" class="form-control" id="bookAuthor" name="book_author" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="bookDescription" class="form-label">Book Description</label>
+                                        <textarea class="form-control" id="bookDescription" name="book_description"
+                                            rows="3"></textarea>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <label for="bookStatus" class="form-label">Book Status</label>
+                                            <select class="form-select" id="bookStatus" name="book_status" required>
+                                                <option value="" disabled selected>Select Status</option>
+                                                <option value="reading">Currently Reading</option>
+                                                <option value="completed">Completed</option>
+                                                <option value="to_read">To Read</option>
+                                                <option value="dropped">Dropped</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="bookCategory" class="form-label">Book Category</label>
+                                            <select class="form-select" id="bookCategory" name="book_category">
+                                                <option value="" disabled selected>Select Category</option>
+                                                <option value="fiction">Fiction</option>
+                                                <option value="nonfiction">Non-Fiction</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="bookGenre" class="form-label">Book Genre</label>
+                                            <select class="form-select" id="bookGenre" name="book_genre">
+                                                <option value="" disabled selected>Select Genre</option>
+                                                <option value="fantasy">Fantasy</option>
+                                                <option value="scifi">Science Fiction</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="bookLink" class="form-label">Book's Online Link</label>
+                                        <input type="url" class="form-control" id="bookLink" name="book_online_link"
+                                            placeholder="https://example.com/book-page">
+                                    </div>
+                                    <input type="hidden" id="dateAdded" name="date_added" value="{{ date('Y-m-d') }}">
+
+                                    <div class="d-grid gap-2">
+                                        <button type="submit" class="btn btn-success btn-lg mt-3">Add Book to
+                                            Collection</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Navbar Menu Starts -->
     @else
     @endauth
@@ -235,6 +307,7 @@
     <script src="{{ asset('js/search.js') }}"></script>
     <script src="{{ asset('js/showtoast.js') }}"></script>
     <script src="{{ asset('js/pagination.js') }}"></script>
+    <script src="{{ asset('js/addimage.js') }}"></script>
 </body>
 
 </html>

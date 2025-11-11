@@ -70,7 +70,10 @@
     background: no-repeat center;
     background-size: cover;
 }
-
+.add-image{
+    width: 100px;
+    height: 100px;
+}
 .wave-1 {
     background-image: url(../images/layered-p1.svg);
 }
