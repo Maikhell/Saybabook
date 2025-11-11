@@ -94,22 +94,19 @@
                                     <input name="password" type="password" class="form-control" id="Password">
                                 </div>
                             </div>
-
-                            <input type="hidden" name="image" value="{{ asset('icons/human-30.png') }}">
-
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-sm-12" id="terms-text">
-                                <p class="terms">By clicking Create account, I agree to the <a class="terms-link"
-                                        href="">Terms of Service</a> and
-                                    <a class="terms-link" href="">Privacy Policy</a>
-                                </p>
-                            </div>
-                            <div class="mb-3" id="create-acc-container">
-                                <button type="submit" class="btn" id="create-acc-btn">Create an Account</button>
+                            <div class="mb-3 row">
+                                <div class="col-sm-12" id="terms-text">
+                                    <p class="terms">By clicking Create account, I agree to the <a class="terms-link"
+                                            href="">Terms of Service</a> and
+                                        <a class="terms-link" href="">Privacy Policy</a>
+                                    </p>
+                                </div>
+                                <input type="hidden" name="image" value="{{ asset('icons/sampleprofile.jpg') }}">
+                                <div class="mb-3" id="create-acc-container">
+                                    <button type="submit" class="btn" id="create-acc-btn">Create an Account</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </form>
             </div>
     </section>

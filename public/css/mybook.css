@@ -42,6 +42,13 @@
     font-size: 15px;
 }
 
+#sub-navbar .nav-item .active {
+    color: #FF5757;
+    font-weight: bold;
+    text-shadow: 0px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, -2px 1px 0 #ffffff;
+    font-size: 15px;
+}
+
 .dropdown-item {
     color: #000000;
     text-shadow: 1px 1px 0 #ffffff, 1px 1px 0 #ffffff, 1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
@@ -93,6 +100,14 @@
     box-shadow: 0 5px 8px rgba(255, 69, 69, 0.171);
 }
 
+#paginated-card .btn {
+    background-color: #FF5757;
+    border-color: #bd0d0d;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 0 5px 8px rgba(255, 69, 69, 0.171);
+}
+
 #btn-out:hover {
     background-color: #e03232;
 }
@@ -116,6 +131,32 @@
     box-shadow: 0 5px 8px rgba(255, 69, 69, 0.171);
 }
 
+.page-link {
+    color: #4e4e4e;
+    font-weight: bold;
+}
+
+.page-item.active .page-link {
+    color: #ffffff;
+    background-color: #e03232;
+    font-weight: bold;
+    border-color: #bd0d0d;
+    box-shadow: 0 5px 8px rgba(255, 0, 0, 0.541);
+}
+
+.page-link:hover {
+    color: #ffffff;
+    background-color: #e03232;
+    font-weight: bold;
+}
+
+.page-link .active {
+    color: #ffffff;
+    background-color: #e03232;
+    font-weight: bold;
+}
+
+
 #category-selector-text:hover {
     background-color: #e03232;
 }
@@ -134,6 +175,7 @@
 .toast-header {
     background-color: #FF5757;
     color: #ffffff;
+
 }
 
 #card-container .card {
@@ -142,12 +184,37 @@
     margin-left: 12px;
     margin-top: 10px;
 }
-#pagination-container{
+
+#pagination-container {
     margin: 10px;
 }
+
 #card-outer-container {
     width: 95%;
     margin: auto;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 1px 1px 0 #f5a0a0, 1px 1px 0 #f55b5b, 1px 1px 0 #af2f2f, 1px 1px 0 #681414;
+    padding: 2px;
+    background-color: #FF5757;
+    border-radius: 5px;
+}
+
+.user-name-head {
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 1px 1px 0 #f5a0a0, 1px 1px 0 #f55b5b, 1px 1px 0 #af2f2f, 1px 1px 0 #681414;
+    margin-right: 10px;
+}
+
+.profile-image {
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #ffffff;
 }
 
 #d-down-selector {

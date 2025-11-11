@@ -57,7 +57,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Browse</a>
+                                <a class="nav-link" aria-current="page" href="#">Browse</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="#">Books</a>
@@ -66,7 +66,7 @@
                                 <a class="nav-link" href="#">Manga</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">My Books</a>
+                                <a class="nav-link active" href="#">My Books</a>
                             </li>
                         </ul>
                         <form class="d-flex" role="search">
@@ -216,7 +216,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center" id="pagination-container">
-                <nav aria-label="Page navigation" id="card-pagination">
+                <nav aria-label="Page navigation example" id="card-pagination">
                     <ul class="pagination">
                         <li class="page-item"><a class="page-link" href="#" data-page="prev">Previous</a>
                         </li>
