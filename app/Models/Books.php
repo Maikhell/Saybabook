@@ -19,6 +19,7 @@ class Books extends Model
         'book_cover',
         'book_status',
         'book_category',
+        'content_medium',
         'book_genre',
         'book_privacy',
         'book_online_link',

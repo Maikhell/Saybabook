@@ -19,7 +19,7 @@ class BookController extends Controller
         $request->merge(
             $request->except('books') + [
                 'books' => collect($request->input('books'))->map(function ($book) {
-                    foreach (['book_description', 'book_category', 'book_genre', 'book_online_link'] as $field) {
+                    foreach (['book_description', 'book_category','content_medium', 'book_genre', 'book_online_link'] as $field) {
                         if (isset($book[$field]) && $book[$field] === '') {
                             $book[$field] = null;
                         }
@@ -37,6 +37,7 @@ class BookController extends Controller
             'books.*.book_cover' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'books.*.book_status' => 'required|in:reading,completed,to_read,dropped',
             'books.*.book_category' => 'nullable|string|max:50',
+            'books.*.content_medium' => 'nullable|string|max:100',
             'books.*.book_genre' => 'nullable|string|max:50',
             'books.*.book_privacy' => 'required|in:public,private',
             'books.*.book_online_link' => 'nullable|url', // This rule now correctly handles nulls

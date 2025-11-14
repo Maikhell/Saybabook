@@ -313,6 +313,18 @@
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
+                            <label for="content_medium-BOOK_INDEX" class="form-label">Content Medium</label>
+                            <select class="form-select" id="content_medium-BOOK_INDEX" 
+                                name="books[BOOK_INDEX][content_medium]">
+                                <option value="" disabled selected>Select Category</option>
+                                <option value="prose">Prose</option>
+                                <option value="graphicnovel">Graphic Novel</option>
+                                <option value="poetry">Poetry</option>
+                                <option value="script">Script</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
                             <label for="bookGenre-BOOK_INDEX" class="form-label">Book Genre</label>
                             <select class="form-select" id="bookGenre-BOOK_INDEX" 
                                 name="books[BOOK_INDEX][book_genre]">
