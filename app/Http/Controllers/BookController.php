@@ -3,11 +3,16 @@
 // BookController.php (Use this version)
 
 namespace App\Http\Controllers;
-
+use App\Models\Books;
+use App\Models\User;
+use App\Services\BookDataService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Contracts\View\View as ViewContract;
 
 class BookController extends Controller
 {
@@ -19,7 +24,7 @@ class BookController extends Controller
         $request->merge(
             $request->except('books') + [
                 'books' => collect($request->input('books'))->map(function ($book) {
-                    foreach (['book_description', 'book_category','content_medium', 'book_genre', 'book_online_link'] as $field) {
+                    foreach (['book_description', 'book_category', 'content_medium', 'book_genre', 'book_online_link'] as $field) {
                         if (isset($book[$field]) && $book[$field] === '') {
                             $book[$field] = null;
                         }
@@ -40,7 +45,7 @@ class BookController extends Controller
             'books.*.content_medium' => 'nullable|string|max:100',
             'books.*.book_genre' => 'nullable|string|max:50',
             'books.*.book_privacy' => 'required|in:public,private',
-            'books.*.book_online_link' => 'nullable|url', // This rule now correctly handles nulls
+            'books.*.book_online_link' => 'nullable|url',
             'books.*.date_added' => 'required|date',
         ];
 
@@ -103,5 +108,38 @@ class BookController extends Controller
             'status' => $status,
             'message' => $message,
         ], $count > 0 ? 200 : 422);
+    }
+    
+    /**
+     * Retrieves user books list and user header data for the 'userbooks' view.
+     *
+     * @param BookDataService $bookService
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+     */
+    public function getUserBooks(BookDataService $bookService): ViewContract|RedirectResponse
+    {
+        // 1. Get the authenticated user data (and handle redirect if necessary)
+        $userHeaderData = $bookService->getAuthUserHeaderData();
+
+        // If the service returns a RedirectResponse, return it immediately
+        if ($userHeaderData instanceof RedirectResponse) {
+            return $userHeaderData;
+        }
+
+        // Now we know $userHeaderData is a User model object
+        $user = $userHeaderData; 
+
+        // 2. Get the book list from the authenticated user
+        $userBooks = $user->books;
+
+        // 3. Get supplementary header data (e.g., counts)
+        $supplementaryHeaderData = $bookService->getSupplementaryHeaderData();
+
+        // 4. Return the view with all necessary data
+        return view('userbooks', [
+            'books' => $userBooks,
+            'userHeaderData' => $userHeaderData, // The User model for header (id, username, image)
+            'supplementaryHeader' => $supplementaryHeaderData // Any other data like counts
+        ]);
     }
 }

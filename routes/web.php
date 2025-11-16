@@ -17,9 +17,9 @@ Route::get('/mybooks', [ProfileController::class, 'showMyBooksHeader'])
     ->middleware(Authenticate::class)
     ->name('mybooks');
 
-Route::get('/userbooks', [ProfileController::class, 'showUserBooksHeader'])
-    ->middleware(PreventBackHistory::class)
+Route::get('/userbooks', [BookController::class, 'getUserBooks'])
     ->middleware(Authenticate::class)
+    ->middleware(PreventBackHistory::class)
     ->name('userbooks');
 
 //Post Routes

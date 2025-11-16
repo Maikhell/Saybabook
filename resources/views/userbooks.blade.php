@@ -191,6 +191,18 @@
             <div class="container-fluid" id="card-outer-container">
                 <div id="card-outer-container">
                     <div class="row justify-content-start mx-auto" id="card-container">
+                        @foreach ($books as $book)
+                            <div class="card" id="paginated-card">
+                                <img src="{{ asset('storage/' . $book->book_cover) }}" class="card-img-top"
+                                    alt="No image loaded">
+                                <span class="card-title">{{ $book->book_title }}</span>
+                                <div class="card-body">
+                                    <a href="#" class="btn btn-primary">Edit</a>
+                                </div>
+
+
+                            </div>
+                        @endforeach
                         <div class="card" id="paginated-card-add">
                             <button class="btn-add" type="button" data-bs-toggle="modal" data-bs-target="#addbooksModal">
                                 <span class="add-ico">+</span>
