@@ -46,7 +46,16 @@ class ProfileController extends Controller
             return $userHeaderData;
         }
 
-        // If it's a User object, proceed to return the view.
-        return view('mybooks', compact('userHeaderData'));
+        // Now we know $userHeaderData is the User model (or the selected columns)
+        /** @var User $user */
+        $user = $userHeaderData;
+
+        // 1. Fetch the user's books where privacy is 'public'
+        $publicBooks = $user->books()
+            ->where('book_privacy', 'public')
+            ->get();
+
+        // 2. Return the view with the required variables
+        return view('mybooks', compact('userHeaderData', 'publicBooks'));
     }
 }

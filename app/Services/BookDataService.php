@@ -2,8 +2,9 @@
 
 namespace App\Services;
 
-use Auth;
+
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 
 /**
@@ -51,4 +52,8 @@ class BookDataService
             'book_count' => Auth::user()->books()->count(),
         ];
     }
+    public function getAllPublicBooks(){
+        
+    }
+  
 }

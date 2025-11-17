@@ -11,40 +11,8 @@
 </head>
 
 <body>
+    @include('layouts.navbar')
     @auth
-        <!-- Navbar Content Starts -->
-        <nav class="navbar navbar-expand-lg navbar-light" id="top-logo">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img class="logo-brand" src="{{asset('icons/Saybabook-logo.png') }}"
-                        alt=""></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    </ul>
-
-                    <div class="row justify-content-end">
-                        @if ($userHeaderData)
-                            <div class="user-info">
-                                <span class="user-name-head">{{ $userHeaderData->username }}</span>
-                                <img src="{{ asset($userHeaderData->image) }}"
-                                    alt="{{ $userHeaderData->username }}'s profile image" class="profile-image" width="50">
-                            </div>
-                        @else
-                            <img src="{{ asset('icons/human-30.png') }}" alt="Default Avatar" class="profile-image">
-                        @endif
-                    </div>
-                    <form action="/logout" method="POST" class="d-flex">
-                        @csrf
-                        <button class="btn btn-outline-success" id="btn-out" type="submit">Logout</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-        <!-- Navbar Content Ends -->
         <!-- Navbar Menu Starts -->
         <section class="sub-navbar-container" id="first-bg">
             <nav class="navbar sticky-top navbar-expand-lg navbar-light" id="sub-navbar">
@@ -189,26 +157,16 @@
             <div class="container-fluid" id="card-outer-container">
                 <div id="card-outer-container">
                     <div class="row justify-content-start mx-auto" id="card-container">
-                        <div class="card" id="paginated-card">
-                            <img src="{{ asset('images/BC.png') }}" class="card-img-top" alt="...">
-                            <span class="card-title">Black Clover</span>
-                            <div class="card-body">
-
-                                <a href="#" class="btn btn-primary">Details</a>
+                        @foreach ($publicBooks as $publicBook)
+                            <div class="card" id="paginated-card">
+                                <img src="{{ asset('storage/' . $publicBook->book_cover) }}" class="card-img-top"
+                                    alt="No image loaded">
+                                <span class="card-title">{{ $publicBook->book_title }}</span>
+                                <div class="card-body">
+                                    <a href="#" class="btn btn-primary">View Details</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card" id="paginated-card">
-                            <img src="{{ asset('images/BC.png') }}" class="card-img-top" alt="...">
-                            <span class="card-title">Black Clover</span>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-primary">Details</a>
-                            </div>
-                        </div>
-                        <div class="card" id="paginated-card-add">
-                            <button class="btn-add" type="button">
-                                <span class="add-ico">+</span>
-                            </button>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

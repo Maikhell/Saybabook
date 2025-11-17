@@ -33,4 +33,10 @@ class Books extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function getAllPublicbooks(){
+        $publicBooks = Books::where('book_privacy', 'public')
+        ->get();
+
+        return $publicBooks;
+    }
 }

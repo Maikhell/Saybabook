@@ -243,7 +243,9 @@
 .modal-footer {
     background-color: #fff;
 }
-
+.dropdown-menu {
+    z-index: 10000 !important; /* One higher than the parent */
+}
 .modal-body {
     background-color: #fff;
     padding-top: 20px;

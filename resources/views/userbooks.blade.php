@@ -11,40 +11,8 @@
 </head>
 
 <body>
+    @include('layouts.navbar')
     @auth
-        <!-- Navbar Content Starts -->
-        <nav class="navbar navbar-expand-lg navbar-light" id="top-logo">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img class="logo-brand" src="{{asset('icons/Saybabook-logo.png') }}"
-                        alt=""></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    </ul>
-
-                    <div class="row justify-content-end">
-                        @if ($userHeaderData)
-                            <div class="user-info">
-                                <span class="user-name-head">{{ $userHeaderData->username }}</span>
-                                <img src="{{ asset($userHeaderData->image) }}"
-                                    alt="{{ $userHeaderData->username }}'s profile image" class="profile-image" width="50">
-                            </div>
-                        @else
-                            <img src="{{ asset('icons/human-30.png') }}" alt="Default Avatar" class="profile-image">
-                        @endif
-                    </div>
-                    <form action="/logout" method="POST" class="d-flex">
-                        @csrf
-                        <button class="btn btn-outline-success" id="btn-out" type="submit">Logout</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-        <!-- Navbar Content Ends -->
         <!-- Navbar Menu Starts -->
         <section class="sub-navbar-container" id="first-bg">
             <nav class="navbar sticky-top navbar-expand-lg navbar-light" id="sub-navbar">
@@ -275,7 +243,7 @@
                 <div class="col-md-4 col-sm-12 text-center">
                     <h4 class="mb-3">Book Cover</h4>
                     <img class="img-fluid border mb-3 bookCoverPreview" style="max-height: 300px; object-fit: cover;"
-                        src="{{ asset('icons/sampleprofile.jpg') }}" alt="Book Cover Preview">
+                        src="{{ asset('images/samplecover.jpg') }}" alt="Book Cover Preview">
                     <div class="mb-3">
                         <label for="bookCoverFile-BOOK_INDEX" class="btn btn-primary w-100">
                             <i class="fas fa-upload me-2"></i> Choose Book Cover

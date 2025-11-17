@@ -109,7 +109,7 @@ class BookController extends Controller
             'message' => $message,
         ], $count > 0 ? 200 : 422);
     }
-    
+
     /**
      * Retrieves user books list and user header data for the 'userbooks' view.
      *
@@ -127,7 +127,7 @@ class BookController extends Controller
         }
 
         // Now we know $userHeaderData is a User model object
-        $user = $userHeaderData; 
+        $user = $userHeaderData;
 
         // 2. Get the book list from the authenticated user
         $userBooks = $user->books;
@@ -140,6 +140,15 @@ class BookController extends Controller
             'books' => $userBooks,
             'userHeaderData' => $userHeaderData, // The User model for header (id, username, image)
             'supplementaryHeader' => $supplementaryHeaderData // Any other data like counts
+        ]);
+    }
+    public function getAllPublicBooks(): ViewContract
+    {
+        $publicBooks = Books::where('book_privacy', 'public')
+            ->get();
+
+        return view('mybooks', [
+            'books' => $publicBooks,
         ]);
     }
 }
