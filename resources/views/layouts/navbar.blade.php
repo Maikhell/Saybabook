@@ -11,11 +11,11 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             </ul>
             @if ($userHeaderData)
-                    <span class="user-name-head">{{ $userHeaderData->username }}</span>
-        
+                <span class="user-name-head">{{ $userHeaderData->username }}</span>
+
                 <div class="row justify-content-end">
                     <div class="user-info">
-                        <div class="dropdown">
+                        <div class="dropstart">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1"
                                     data-bs-toggle="dropdown" aria-expanded="false"
@@ -24,13 +24,13 @@
                                         alt="{{ $userHeaderData->username }}'s profile image" class="profile-image"
                                         width="50">
                                 </button>
-                                <ul class="dropdown-menu **z-3**" aria-labelledby="dropdownMenuButton1">
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <li><a class="dropdown-item" href="#">Account</a></li>
                                     <li><a class="dropdown-item" href="#">Archive</a></li>
                                     <li>
                                         <form action="/logout" method="POST" style="margin-bottom: 0;">
                                             @csrf
-                                            <button class="dropdown-item" type="submit">Logout</button>
+                                            <button class="dropdown-item" type="submit" style="color:red;">Logout</button>
                                         </form>
                                     </li>
                                 </ul>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
             @else
-                    <img src="{{ asset('icons/human-30.png') }}" alt="Default Avatar" class="profile-image">
+                    <img src="{{ asset('icons/default_profile.png') }}" alt="Default Avatar" class="profile-image">
                 @endif
             </div>
             <form action="/logout" method="POST" class="d-flex">

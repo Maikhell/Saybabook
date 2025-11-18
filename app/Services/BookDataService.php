@@ -52,8 +52,4 @@ class BookDataService
             'book_count' => Auth::user()->books()->count(),
         ];
     }
-    public function getAllPublicBooks(){
-        
-    }
-  
-}
+};

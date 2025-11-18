@@ -12,6 +12,10 @@ Route::get('/', function () {
     return view('landingpage');
 })->name('landingpage')->middleware(PreventBackHistory::class);
 
+Route::get('/all-public-books', [BookController::class, 'getAllPublicBooks'])
+    ->middleware(PreventBackHistory::class)
+    ->name('public.books');
+
 Route::get('/mybooks', [ProfileController::class, 'showMyBooksHeader'])
     ->middleware(PreventBackHistory::class)
     ->middleware(Authenticate::class)

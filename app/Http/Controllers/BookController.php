@@ -142,13 +142,25 @@ class BookController extends Controller
             'supplementaryHeader' => $supplementaryHeaderData // Any other data like counts
         ]);
     }
-    public function getAllPublicBooks(): ViewContract
+    public function getAllPublicBooks(BookDataService $bookService): ViewContract|RedirectResponse
     {
-        $publicBooks = Books::where('book_privacy', 'public')
-            ->get();
+        // Get user header data (or redirect if unauthenticated, depending on service)
+        $userHeaderData = $bookService->getAuthUserHeaderData();
+
+        // If the user is unauthenticated (and the service returned a redirect)
+        // we check again using Auth::check() to confirm they are a guest
+        if ($userHeaderData instanceof RedirectResponse && !Auth::check()) {
+            $userHeaderData = null; // Treat as guest access for the header data
+        }
+
+        // Retrieve all books marked as 'public' using the Eloquent Scope
+        $publicBooks = Books::withoutGlobalScopes()->public()->get();
+        // NOTE: If 'user' doesn't work, try Books::withoutGlobalScopes()->public()->get();
+        // If you don't know the scope name, use withoutGlobalScopes() to disable ALL of them.
 
         return view('mybooks', [
-            'books' => $publicBooks,
+            'publicBooks' => $publicBooks,
+            'userHeaderData' => $userHeaderData,
         ]);
     }
 }

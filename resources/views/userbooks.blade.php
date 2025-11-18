@@ -134,7 +134,6 @@
                     </div>
                 </div>
             </nav>
-
             @if ($userHeaderData)
                 <div class="position-fixed bottom-0 end-0 p-3">
                     <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="popToast">
@@ -162,13 +161,11 @@
                         @foreach ($books as $book)
                             <div class="card" id="paginated-card">
                                 <img src="{{ asset('storage/' . $book->book_cover) }}" class="card-img-top"
-                                    alt="No image loaded">
+                                    alt="No image loaded" id="card-image">
                                 <span class="card-title">{{ $book->book_title }}</span>
                                 <div class="card-body">
                                     <a href="#" class="btn btn-primary">Edit</a>
                                 </div>
-
-
                             </div>
                         @endforeach
                         <div class="card" id="paginated-card-add">
@@ -196,7 +193,7 @@
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Books</h5>
+                        <h1 class="modal-title" id="exampleModalLabel">Add Books</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
@@ -205,7 +202,7 @@
 
                         <div class="modal-body">
                             <div id="book-forms-container">
-                                {{-- The content here will be added dynamically --}}
+                                {{-- Next Form Will Be Added Here --}}
                             </div>
                         </div>
 
@@ -213,11 +210,10 @@
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
                             <button type="submit" class="btn btn-success btn-lg">
-                                <i class="fas fa-check me-2"></i> Add Book(s) to Collection
+                                Add Book(s) to Collection
                             </button>
-
                             <button type="button" class="btn btn-primary btn-lg" id="add-more-books-btn">
-                                <i class="fas fa-plus me-2"></i> Add More Books
+                                Add More Books
                             </button>
                         </div>
                     </form>
@@ -243,10 +239,10 @@
                 <div class="col-md-4 col-sm-12 text-center">
                     <h4 class="mb-3">Book Cover</h4>
                     <img class="img-fluid border mb-3 bookCoverPreview" style="max-height: 300px; object-fit: cover;"
-                        src="{{ asset('images/samplecover.jpg') }}" alt="Book Cover Preview">
+                      alt="Book Cover Preview" src = "{{asset('images/default_cover.png')  }}">
                     <div class="mb-3">
-                        <label for="bookCoverFile-BOOK_INDEX" class="btn btn-primary w-100">
-                            <i class="fas fa-upload me-2"></i> Choose Book Cover
+                        <label for="bookCoverFile-BOOK_INDEX" class="btn btn-primary" id= "addBookCover">
+                           Choose Book Cover
                         </label>
                         <input type="file" class="form-control d-none bookCoverFile" 
                             id="bookCoverFile-BOOK_INDEX" 

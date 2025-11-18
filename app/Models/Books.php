@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Builder;
 
 class Books extends Model
 {
@@ -33,10 +34,19 @@ class Books extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function getAllPublicbooks(){
-        $publicBooks = Books::where('book_privacy', 'public')
-        ->get();
 
-        return $publicBooks;
+    /**
+     * Scope a query to only include public books.
+     *
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopePublic(Builder $query): Builder
+    {
+        return $query->where('book_privacy', 'public');
     }
+
+    // REMOVED: public function getAllPublicBooks() is removed and replaced by the scope.
 }
+
+

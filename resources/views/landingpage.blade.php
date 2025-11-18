@@ -101,7 +101,7 @@
                                         <a class="terms-link" href="">Privacy Policy</a>
                                     </p>
                                 </div>
-                                <input type="hidden" name="image" value="{{ asset('icons/sampleprofile.jpg') }}">
+                                <input type="hidden" name="image" value="{{ asset('icons/default_profile.png') }}">
                                 <div class="mb-3" id="create-acc-container">
                                     <button type="submit" class="btn" id="create-acc-btn">Create an Account</button>
                                 </div>
