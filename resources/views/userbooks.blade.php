@@ -231,11 +231,8 @@
     </script>
     <script id="book-form-template" type="text/template">
         <div class="book-form-instance mb-5 p-4 border rounded shadow-sm" data-index="BOOK_INDEX">
-
             <h4 class="mb-4 text-primary">Book #<span class="book-index-display">BOOK_DISPLAY_INDEX</span></h4>
-
             <div class="row justify-content-center">
-
                 <div class="col-md-4 col-sm-12 text-center">
                     <h4 class="mb-3">Book Cover</h4>
                     <img class="img-fluid border mb-3 bookCoverPreview" style="max-height: 300px; object-fit: cover;"
@@ -250,7 +247,6 @@
                             accept="image/*">
                     </div>
                 </div>
-
                 <div class="col-md-8 col-sm-12">
                     <div class="mb-3">
                         <label for="bookTitle-BOOK_INDEX" class="form-label">Book Title</label>
@@ -319,23 +315,18 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="mb-3">
                         <label for="bookLink-BOOK_INDEX" class="form-label">Book's Online Link</label>
                         <input type="url" class="form-control" id="bookLink-BOOK_INDEX" 
                             name="books[BOOK_INDEX][book_online_link]"
                             placeholder="https://example.com/book-page">
                     </div>
-
                     <input type="hidden" name="books[BOOK_INDEX][date_added]" value="BOOK_DATE_VALUE"> 
-
                 </div>
             </div>
-
             <div class="text-end">
                  <button type="button" class="btn btn-outline-danger btn-sm remove-book-btn">Remove Book</button>
             </div>
-
         </div>
     </script>
 

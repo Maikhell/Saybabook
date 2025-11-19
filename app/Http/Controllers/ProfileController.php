@@ -23,39 +23,40 @@ class ProfileController extends Controller
     /**
      * Retrieves essential user data for the header or returns a redirect.
      * This method now delegates to the Service class.
-     *
      * @return User|RedirectResponse
      */
     private function getUserHeaderData(): User|RedirectResponse
     {
-        // Delegation to the service class
         return $this->bookService->getAuthUserHeaderData();
     }
 
     /**
      * Shows the 'mybooks' view with user header data.
-     *
      * @return ViewContract|RedirectResponse
      */
     public function showMyBooksHeader(): ViewContract|RedirectResponse
     {
         $userHeaderData = $this->getUserHeaderData();
-
-        // If getUserHeaderData returned a redirect, return it immediately.
         if ($userHeaderData instanceof RedirectResponse) {
             return $userHeaderData;
         }
-
-        // Now we know $userHeaderData is the User model (or the selected columns)
         /** @var User $user */
         $user = $userHeaderData;
 
-        // 1. Fetch the user's books where privacy is 'public'
         $publicBooks = $user->books()
             ->where('book_privacy', 'public')
             ->get();
-
-        // 2. Return the view with the required variables
         return view('mybooks', compact('userHeaderData', 'publicBooks'));
+    }
+    public function showAccountDetails(){
+        $userHeaderData = $this->getUserHeaderData();
+        if($userHeaderData instanceof RedirectResponse){
+            return $userHeaderData;
+        }
+        /** @var User $user */
+
+        $user = $userHeaderData;
+
+        return view('editaccount', compact('userHeaderData'));
     }
 }
