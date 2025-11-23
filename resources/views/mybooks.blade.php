@@ -12,11 +12,9 @@
 
 <body>
     @auth
-        @include('layouts.navbar')
-        @include('layouts.menu')
-        <div class="divider wave-1">
-        </div>
         <section class="second-bg">
+            @include('layouts.navbar')
+            @include('layouts.menu')
             <div class="container-fluid" id="card-outer-container">
                 <div id="card-outer-container">
                     <div class="row justify-content-start mx-auto" id="card-container">
