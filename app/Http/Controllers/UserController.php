@@ -67,7 +67,7 @@ class UserController extends Controller
             'email' => ['required', 'email', 'unique:users,email,' . $user->id],
             'username' => ['required', 'string', 'max:255'],
             'currentPassword' => ['string'],
-            'newPassword' => [ 'string'],
+            'newPassword' => ['string'],
         ]);
         if ($request->hasFile('image')) {
             if ($user->image && !str_contains($user->image, 'default_')) {

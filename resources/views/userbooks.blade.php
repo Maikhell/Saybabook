@@ -122,7 +122,6 @@
                                                         onclick="selectCategory('Reference', event)">Reference</a></li>
                                                 <li><a class="dropdown-item" href="#"
                                                         onclick="selectCategory('Travel', event)">Travel</a></li>
-
                                             </ul>
                                         </li>
                                     </ul>

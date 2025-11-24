@@ -22,4 +22,5 @@ class Authenticate
         abort(401);
 
     }
+    
 }

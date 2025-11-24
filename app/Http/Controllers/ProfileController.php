@@ -48,19 +48,20 @@ class ProfileController extends Controller
             ->public()
             ->latest()
             ->get();
-
-        return view('mybooks', compact('userHeaderData', 'publicBooks','user'));
+        return view('mybooks', compact('userHeaderData', 'publicBooks', 'user'));
     }
-    public function showAccountDetails(){
+    public function showAccountDetails()
+    {
         $user = auth()->user();
         $userHeaderData = $this->getUserHeaderData();
-        if($userHeaderData instanceof RedirectResponse){
+        if ($userHeaderData instanceof RedirectResponse) {
             return $userHeaderData;
         }
         /** @var User $user */
 
+
         $user = $userHeaderData;
 
-        return view('editaccount', compact('userHeaderData','user'));
+        return view('editaccount', compact('userHeaderData', 'user'));
     }
 }

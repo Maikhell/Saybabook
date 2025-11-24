@@ -52,7 +52,18 @@
                                     alt="{{ asset('storage/' . 'images/default_cover.png') }}">
                                 <span class="card-title">{{ $publicBook->book_title }}</span>
                                 <div class="card-body">
-                                    <a href="#" class="btn btn-primary">View Details</a>
+                                    <a type="button" href="#" data-bs-toggle="modal" data-bs-target="#bookDetailModal"
+                                        data-book-title="{{ $publicBook->book_title }}"
+                                        data-book-author="{{ $publicBook->book_author }}"
+                                        data-book-genre="{{$publicBook->book_genre }}"
+                                        data-book-category="{{$publicBook->book_category }}"
+                                        data-book-privacy="{{$publicBook->book_privacy }}"
+                                        data-book-online_link="{{$publicBook->book_online_link }}"
+                                        data-book-date="{{$publicBook->date_added}}"
+                                        data-book-ownerId="{{$publicBook->user->username }}"
+                                        data-book-cover="{{$publicBook->book_cover}}"
+                                        data-book-description="{{ $publicBook->book_description }}"
+                                        data-book-id="{{ $publicBook->id }}" class="btn btn-primary">View Details</a>
                                 </div>
                             </div>
                         @endforeach
@@ -72,12 +83,35 @@
                     </ul>
                 </nav>
             </div>
-        </section>
-        <!-- Navbar Menu Starts -->
+
+            <!-- Navbar Menu Starts -->
+
+            <div class="modal" tabindex="-1" id="bookDetailModal">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalTitle">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="modalBodyContent">
+                         
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
     @else
-    @endauth
+        @endauth
+    </section>
+
+
     <script src="{{ asset('bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ asset('js/search.js') }}"></script>
+    <script src="{{ asset('js/detailview.js') }}"></script>
     <script src=" {{ asset('js/showtoast.js') }}"></script>
     <script src="{{ asset('js/pagination.js') }}"></script>
 </body>

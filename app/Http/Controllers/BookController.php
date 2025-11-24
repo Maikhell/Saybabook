@@ -9,6 +9,7 @@ use App\Services\BookDataService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\RedirectResponse;
@@ -85,8 +86,6 @@ class BookController extends Controller
                     Log::error("File storage failed for Book Index {$index}: " . $e->getMessage());
                 }
             }
-
-            // 4. Create the Book record
             $bookToCreate = array_merge($book, [
                 'book_cover' => $coverPath,
             ]);
@@ -120,25 +119,42 @@ class BookController extends Controller
      */
     public function getUserBooks(BookDataService $bookService): ViewContract|RedirectResponse
     {
-        // 1. Get the authenticated user data (and handle redirect if necessary)
         $userHeaderData = $bookService->getAuthUserHeaderData();
 
-        // If the service returns a RedirectResponse, return it immediately
         if ($userHeaderData instanceof RedirectResponse) {
             return $userHeaderData;
         }
-        // Now we know $userHeaderData is a User model object
         $user = $userHeaderData;
-        // 2. Get the book list from the authenticated user
+        //Get the book list from the authenticated user
         $userBooks = $user->books;
-        // 3. Get supplementary header data (e.g., counts)
         $supplementaryHeaderData = $bookService->getSupplementaryHeaderData();
-        // 4. Return the view with all necessary data
         return view('userbooks', compact('user'), [
             'books' => $userBooks,
             'userHeaderData' => $userHeaderData, // The User model for header (id, username, image)
             'supplementaryHeader' => $supplementaryHeaderData // Any other data like counts
         ]);
+        
+    }
+    public function updateBooks(Request $request)
+    {
+        $user = auth()->user();
+        $validatedData = $request->validate([
+            'book_title' => '',
+            'book_author' => '',
+            'book_description' => '',
+            'book_cover' => '',
+            'book_status' => '',
+            'book_category' => '',
+            'content_medium' => '',
+            'book_genre' => '',
+            'book_privacy' => '',
+            'book_online_link' => '',
+            'date_added'
+        ]);
+        $user->book_title = $validatedData['book_title'];
+        $validatedData->save();
+
+        return redirectTo()->with()->back('success', 'Updated Successfully');
     }
 
 }

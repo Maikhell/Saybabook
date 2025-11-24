@@ -10,28 +10,20 @@ use App\Http\Controllers\UserController;
 //Get Routes
 Route::get('/', function () {
     return view('landingpage');
-})->name('landingpage')->middleware(PreventBackHistory::class);
+})->name('landingpage');
 
-//Merge With The profile header already working.
-Route::get('/all-public-books', [BookController::class, 'getAllPublicBooks']) 
-    ->middleware(PreventBackHistory::class)
-    ->name('public.books');
 
-Route::get('/mybooks', [ProfileController::class, 'showMyBooksHeader',])
-    ->middleware(PreventBackHistory::class)
-    ->middleware(Authenticate::class)
-    ->name('mybooks');
+Route::middleware([Authenticate::class, PreventBackHistory::class])->group(function () {
+    Route::get('/editaccount', [ProfileController::class, 'showAccountDetails'])
+        ->name('account');
+    Route::get('/userbooks', [BookController::class, 'getUserBooks'])
+        ->name('userbooks');
+    Route::get('/mybooks', [ProfileController::class, 'showMyBooksHeader',])
+        ->name('mybooks');
+    Route::get('/books/{id}', [BookController::class,'showDetailBook'])
+        ->name('book.show');
 
-Route::get('/userbooks', [BookController::class, 'getUserBooks'])
-    ->middleware(Authenticate::class)
-    ->middleware(PreventBackHistory::class)
-    ->name('userbooks');
-
-Route::get('/editaccount', [ProfileController::class, 'showAccountDetails'])
-    ->middleware(Authenticate::class)
-    ->middleware(PreventBackHistory::class)
-    ->name('account');
-
+});
 //Post Routes
 Route::post('/register', [UserController::class, 'register'])
     ->name('register');
@@ -42,4 +34,4 @@ Route::post(uri: '/login', action: [UserController::class, 'login'])
 Route::post('/addbooks', [BookController::class, 'store'])
     ->name('addbooks');
 Route::post('/update', [UserController::class, 'updateUserDetails'])
-    ->name('updateUser');   
+    ->name('updateUser');
