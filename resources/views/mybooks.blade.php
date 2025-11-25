@@ -61,7 +61,7 @@
                                         data-book-online_link="{{$publicBook->book_online_link }}"
                                         data-book-date="{{$publicBook->date_added}}"
                                         data-book-ownerId="{{$publicBook->user->username }}"
-                                        data-book-cover="{{$publicBook->book_cover}}"
+                                        data-book-cover="{{'storage/' . $publicBook->book_cover}}"
                                         data-book-description="{{ $publicBook->book_description }}"
                                         data-book-id="{{ $publicBook->id }}" class="btn btn-primary">View Details</a>
                                 </div>
@@ -69,7 +69,7 @@
                         @endforeach
                     </div>
                 </div>
-            </div>
+            </div>          
             </div>
             <div class="d-flex justify-content-center" id="pagination-container">
                 <nav aria-label="Page navigation" id="card-pagination">

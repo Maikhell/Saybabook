@@ -29,7 +29,6 @@ class UserController extends Controller
             ])
         ) {
             $request->session()->regenerate();
-
             return redirect()->route('mybooks');
         }
         throw ValidationException::withMessages([

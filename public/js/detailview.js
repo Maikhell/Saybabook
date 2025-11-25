@@ -28,7 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
         <h5>Book ID: ${bookId}</h5>
         <div class="row">
             <div class="col-4">
-            <img src="${cover}" alt="">
+          <div class = "container">
+            <img class="detailImage" src="${cover}" alt="">
+            </div>
         </div>
             <div class="col-8">
             <p><strong>Author:</strong> ${author}</p>
@@ -36,14 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
             <p><strong>Book Category:</strong> ${category}</p>
             <p><strong>Book Genre:</strong> ${genre}</p>
             <p><strong>Date Added:</strong> ${date}</p>
-            <p><strong>Book Privacy:</strong> ${privacy}</p>
-            <p><strong>Online Link:</strong>${link}</p>
+            <p><strong>Book Privacy:</strong> ${privacy}</p> 
+            <p><strong>Online Link: </strong><a href= "${link}">${link}</a></p>
             <p><strong>Owner Name:</strong> ${ownerName}</p>
              </div>
         </div>
           
             <hr>
-            <p>This is the detail view for Book ID: ${bookId}</p>
+            <p>Book ID: ${bookId}</p>
  
         `;
     });
